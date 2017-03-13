@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18BDBD751E76F8C600E13CD1 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDBD741E76F8C600E13CD1 /* StartViewController.swift */; };
+		18BDBD771E76FEDA00E13CD1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDBD761E76FEDA00E13CD1 /* Button.swift */; };
 		9865E8B01E74AAA900722B03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9865E8AF1E74AAA900722B03 /* AppDelegate.swift */; };
 		9865E8B21E74AAA900722B03 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9865E8B11E74AAA900722B03 /* GameScene.sks */; };
 		9865E8B41E74AAA900722B03 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9865E8B31E74AAA900722B03 /* Actions.sks */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18BDBD741E76F8C600E13CD1 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		18BDBD761E76FEDA00E13CD1 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		9865E8AC1E74AAA900722B03 /* GAME3004Assignment3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GAME3004Assignment3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9865E8AF1E74AAA900722B03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9865E8B11E74AAA900722B03 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -103,15 +107,17 @@
 		9865E8AE1E74AAA900722B03 /* GAME3004Assignment3 */ = {
 			isa = PBXGroup;
 			children = (
-				9865E8AF1E74AAA900722B03 /* AppDelegate.swift */,
-				9865E8B11E74AAA900722B03 /* GameScene.sks */,
 				9865E8B31E74AAA900722B03 /* Actions.sks */,
+				9865E8AF1E74AAA900722B03 /* AppDelegate.swift */,
+				9865E8BC1E74AAA900722B03 /* Assets.xcassets */,
+				9865E8B11E74AAA900722B03 /* GameScene.sks */,
 				9865E8B51E74AAA900722B03 /* GameScene.swift */,
 				9865E8B71E74AAA900722B03 /* GameViewController.swift */,
-				9865E8B91E74AAA900722B03 /* Main.storyboard */,
-				9865E8BC1E74AAA900722B03 /* Assets.xcassets */,
-				9865E8BE1E74AAAA00722B03 /* LaunchScreen.storyboard */,
 				9865E8C11E74AAAA00722B03 /* Info.plist */,
+				9865E8BE1E74AAAA00722B03 /* LaunchScreen.storyboard */,
+				9865E8B91E74AAA900722B03 /* Main.storyboard */,
+				18BDBD741E76F8C600E13CD1 /* StartViewController.swift */,
+				18BDBD761E76FEDA00E13CD1 /* Button.swift */,
 			);
 			path = GAME3004Assignment3;
 			sourceTree = "<group>";
@@ -270,7 +276,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18BDBD771E76FEDA00E13CD1 /* Button.swift in Sources */,
 				9865E8B61E74AAA900722B03 /* GameScene.swift in Sources */,
+				18BDBD751E76F8C600E13CD1 /* StartViewController.swift in Sources */,
 				9865E8B81E74AAA900722B03 /* GameViewController.swift in Sources */,
 				9865E8B01E74AAA900722B03 /* AppDelegate.swift in Sources */,
 			);
@@ -517,6 +525,7 @@
 				9865E8DC1E74AAAA00722B03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9865E8DD1E74AAAA00722B03 /* Build configuration list for PBXNativeTarget "GAME3004Assignment3Tests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +534,7 @@
 				9865E8DF1E74AAAA00722B03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9865E8E01E74AAAA00722B03 /* Build configuration list for PBXNativeTarget "GAME3004Assignment3UITests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +543,7 @@
 				9865E8E21E74AAAA00722B03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
