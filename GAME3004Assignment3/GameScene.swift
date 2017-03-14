@@ -23,6 +23,16 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        let P1Label : SKLabelNode = self.childNode(withName: "//UI_Player1//Player1Label") as! SKLabelNode
+        let P2Label : SKLabelNode = self.childNode(withName: "//UI_Player2//Player2Label") as! SKLabelNode
+        let P1Message : SKLabelNode = self.childNode(withName: "//UI_Player1//Player1Message") as! SKLabelNode
+        let P2Message : SKLabelNode = self.childNode(withName: "//UI_Player1//Player1Message") as! SKLabelNode
+        
+        P1Label.fontName = "kenpixel-blocks"
+        P2Label.fontName = "kenpixel-blocks"
+        P1Message.fontName = "kenvector-future-thin"
+        P2Message.fontName = "kenvector-future-thin"
+        
         // Get label node from scene and store it for use later
         self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
         if let label = self.label {

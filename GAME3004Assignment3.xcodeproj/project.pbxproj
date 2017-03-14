@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		18BDBD751E76F8C600E13CD1 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDBD741E76F8C600E13CD1 /* StartViewController.swift */; };
 		18BDBD771E76FEDA00E13CD1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDBD761E76FEDA00E13CD1 /* Button.swift */; };
+		2350E3FE1E78961400E21D63 /* kenpixel_blocks.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2350E3FC1E78961400E21D63 /* kenpixel_blocks.ttf */; };
+		2350E3FF1E78961400E21D63 /* kenvector_future_thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2350E3FD1E78961400E21D63 /* kenvector_future_thin.ttf */; };
 		23F490731E783944001F3249 /* ObserverSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F490721E783944001F3249 /* ObserverSystem.swift */; };
 		23F490751E783A58001F3249 /* UIObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F490741E783A58001F3249 /* UIObservable.swift */; };
 		23F490771E783F80001F3249 /* ObserverTestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F490761E783F80001F3249 /* ObserverTestObject.swift */; };
@@ -44,6 +46,8 @@
 /* Begin PBXFileReference section */
 		18BDBD741E76F8C600E13CD1 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		18BDBD761E76FEDA00E13CD1 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		2350E3FC1E78961400E21D63 /* kenpixel_blocks.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = kenpixel_blocks.ttf; path = GAME3004Assignment3/Fonts/kenpixel_blocks.ttf; sourceTree = "<group>"; };
+		2350E3FD1E78961400E21D63 /* kenvector_future_thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = kenvector_future_thin.ttf; path = GAME3004Assignment3/Fonts/kenvector_future_thin.ttf; sourceTree = "<group>"; };
 		23F490721E783944001F3249 /* ObserverSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverSystem.swift; sourceTree = "<group>"; };
 		23F490741E783A58001F3249 /* UIObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIObservable.swift; sourceTree = "<group>"; };
 		23F490761E783F80001F3249 /* ObserverTestObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverTestObject.swift; sourceTree = "<group>"; };
@@ -90,9 +94,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		233C00541E7892EE000E2C10 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2350E3FC1E78961400E21D63 /* kenpixel_blocks.ttf */,
+				2350E3FD1E78961400E21D63 /* kenvector_future_thin.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		9865E8A31E74AAA900722B03 = {
 			isa = PBXGroup;
 			children = (
+				233C00541E7892EE000E2C10 /* Resources */,
 				9865E8AE1E74AAA900722B03 /* GAME3004Assignment3 */,
 				9865E8C91E74AAAA00722B03 /* GAME3004Assignment3Tests */,
 				9865E8D41E74AAAA00722B03 /* GAME3004Assignment3UITests */,
@@ -258,8 +272,10 @@
 			files = (
 				9865E8BB1E74AAA900722B03 /* Main.storyboard in Resources */,
 				9865E8B21E74AAA900722B03 /* GameScene.sks in Resources */,
+				2350E3FF1E78961400E21D63 /* kenvector_future_thin.ttf in Resources */,
 				9865E8BD1E74AAA900722B03 /* Assets.xcassets in Resources */,
 				9865E8C01E74AAAA00722B03 /* LaunchScreen.storyboard in Resources */,
+				2350E3FE1E78961400E21D63 /* kenpixel_blocks.ttf in Resources */,
 				9865E8B41E74AAA900722B03 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
