@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-class Button: SKSpriteNode
+class Button: UIObservable
 {
     var m_width : CGFloat
     var m_height: CGFloat
@@ -43,7 +43,7 @@ class Button: SKSpriteNode
             m_timerAction = SKAction.wait(forDuration: m_timer)
             self.run(m_timerAction!)
             {
-                print("Test")
+                self.Notify()
             }
             return true
         }

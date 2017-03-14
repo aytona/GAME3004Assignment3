@@ -15,6 +15,11 @@ class GameScene: SKScene {
     private var spinnyNode : SKShapeNode?
     
     private var button : Button?
+    private var button1 : Button?
+    
+    private let obs1 = ObserverTestObject()
+    private let obs2 = ObserverTestObject()
+    private let obs3 = ObserverTestObject()
     
     override func didMove(to view: SKView) {
         
@@ -41,6 +46,24 @@ class GameScene: SKScene {
         button = Button(150, 50)
         button?.SetTimer(3)
         self.addChild(button!)
+        button?.SetName("Spaceship button")
+        
+        button1 = Button(150, 100)
+        button1?.SetTimer(3)
+        self.addChild(button1!)
+        button1?.SetName("Other button")
+        button1?.position.y = (button1?.position.y)! - 200
+        
+        obs1.name = "one"
+        obs2.name = "two"
+        obs3.name = "three"
+        
+        obs1.SetKey((button?.Attach(obs1))!, button!)
+        obs2.SetKey((button?.Attach(obs2))!, button!)
+        obs3.SetKey((button?.Attach(obs3))!, button!)
+        
+        obs1.SetKey((button1?.Attach(obs1))!, button1!)
+        obs2.SetKey((button1?.Attach(obs2))!, button1!)
     }
     
     
@@ -51,8 +74,15 @@ class GameScene: SKScene {
             self.addChild(n)
         }
         
-        button?.InBounds(pos)
-
+        if(button?.InBounds(pos))!
+        {
+            print("Button 0 pressed")
+        }
+        
+        if(button1?.InBounds(pos))!
+        {
+            print("Button 1 pressed")
+        }
     }
     
     func touchMoved(toPoint pos : CGPoint) {
