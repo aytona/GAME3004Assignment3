@@ -17,7 +17,14 @@ class ObserverTestObject: Observer
     
     func Call(_ observable: Observable)
     {
-        print(observable.GetName() + " from " + name);
+        for (n, _) in m_keys
+        {
+            if(n == observable.GetName())
+            {
+                print(n + " from " + name);
+            }
+        }
+        
     }
     
     func SetKey(_ key: Int, _ observable: Observable)
