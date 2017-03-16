@@ -13,6 +13,7 @@ class UIVisualController
 {
     let scene : SKScene
     var glassPanels : [SKSpriteNode] = []
+    var pausePanel : SKSpriteNode?
     var healthBars : [SKSpriteNode] = []
     
     init(_ _scene: SKScene)
@@ -36,10 +37,19 @@ class UIVisualController
         let P1Message : SKLabelNode = scene.childNode(withName: "//UI_Player1//Player1Message") as! SKLabelNode
         let P2Message : SKLabelNode = scene.childNode(withName: "//UI_Player1//Player1Message") as! SKLabelNode
         
+        let pauseLabel : SKLabelNode = scene.childNode(withName: "//UI_PauseMenu//PausePanel//PauseLabel") as! SKLabelNode
+        let restartButton : SKLabelNode = scene.childNode(withName: "//UI_PauseMenu//PausePanel//RestartButton//Label") as! SKLabelNode
+        let quitButton : SKLabelNode = scene.childNode(withName: "//UI_PauseMenu//PausePanel//QuitButton//Label") as! SKLabelNode
+        
         P1Label.fontName = "kenpixel-blocks"
         P2Label.fontName = "kenpixel-blocks"
         P1Message.fontName = "kenvector-future-thin"
         P2Message.fontName = "kenvector-future-thin"
+        
+        pauseLabel.fontName = "kenvector-future-thin"
+        restartButton.fontName = "kenpixel-blocks"
+        quitButton.fontName = "kenpixel-blocks"
+        
     }
     
     private func GetGlassPanels()
@@ -51,6 +61,8 @@ class UIVisualController
         glassPanels.append(scene.childNode(withName: "//UI_Player2//PlayerLabelPanel") as! SKSpriteNode)
         glassPanels.append(scene.childNode(withName: "//UI_Player2//StarPanel") as! SKSpriteNode)
         glassPanels.append(scene.childNode(withName: "//UI_Player2//StaminaPanel") as! SKSpriteNode)
+        
+        pausePanel = scene.childNode(withName: "//UI_PauseMenu//PausePanel") as? SKSpriteNode
     }
     
     private func SetGlassPanelRects()
@@ -59,6 +71,8 @@ class UIVisualController
         {
             panel.centerRect = CGRect(x: 25.0/100.0, y: 25.0/100.0, width: 50.0/100.0, height: 50.0/100.0)
         }
+        
+        pausePanel?.centerRect = CGRect(x: 25.0/100.0, y: 25.0/100.0, width: 50.0/100.0, height: 50.0/100.0)
     }
     
     private func GetHealthBars()

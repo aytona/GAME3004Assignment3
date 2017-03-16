@@ -10,28 +10,18 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-    private var restartButton : Button?
-    
-    private let obs1 = ObserverTestObject()
-    private let obs2 = ObserverTestObject()
-    private let obs3 = ObserverTestObject()
+    private var pauseButton : Button?
+    private let pauseMenu = PauseMenu()
     
     override func didMove(to view: SKView) {
-        restartButton = (self.childNode(withName: "//Player1//Panda") as! Button)
-        restartButton?.SetName("Panda")
-        restartButton?.SetTimer(3)
+        // Set up pause button and menu
+        pauseButton = (self.childNode(withName: "//UI_Other//Pause") as! Button)
+        pauseButton?.SetName("Pause")
+        pauseMenu.name = "PauseMenu"
+        pauseMenu.SetupPauseMenu(self)
+        pauseMenu.SetKey((pauseButton?.Attach(pauseMenu))!, pauseButton!)
         
-        obs1.name = "one"
-        obs2.name = "two"
-        obs3.name = "three"
-        
-        //obs1.SetKey((button?.Attach(obs1))!, button!)
-        //obs2.SetKey((button?.Attach(obs2))!, button!)
-        //obs3.SetKey((button?.Attach(obs3))!, button!)
-        
-        obs1.SetKey((restartButton?.Attach(obs1))!, restartButton!)
-        obs2.SetKey((restartButton?.Attach(obs2))!, restartButton!)
-        
+        // Clean up UI visuals
         let UIVisuals = UIVisualController(self)
         UIVisuals.SetupUI()
         
