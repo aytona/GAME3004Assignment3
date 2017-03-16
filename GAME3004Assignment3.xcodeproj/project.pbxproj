@@ -11,6 +11,7 @@
 		18BDBD771E76FEDA00E13CD1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDBD761E76FEDA00E13CD1 /* Button.swift */; };
 		2350E3FE1E78961400E21D63 /* kenpixel_blocks.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2350E3FC1E78961400E21D63 /* kenpixel_blocks.ttf */; };
 		2350E3FF1E78961400E21D63 /* kenvector_future_thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2350E3FD1E78961400E21D63 /* kenvector_future_thin.ttf */; };
+		235D743B1E7A236A00DE916E /* UIVisualController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D743A1E7A236A00DE916E /* UIVisualController.swift */; };
 		23F490731E783944001F3249 /* ObserverSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F490721E783944001F3249 /* ObserverSystem.swift */; };
 		23F490751E783A58001F3249 /* UIObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F490741E783A58001F3249 /* UIObservable.swift */; };
 		23F490771E783F80001F3249 /* ObserverTestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F490761E783F80001F3249 /* ObserverTestObject.swift */; };
@@ -48,6 +49,7 @@
 		18BDBD761E76FEDA00E13CD1 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		2350E3FC1E78961400E21D63 /* kenpixel_blocks.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = kenpixel_blocks.ttf; path = GAME3004Assignment3/Fonts/kenpixel_blocks.ttf; sourceTree = "<group>"; };
 		2350E3FD1E78961400E21D63 /* kenvector_future_thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = kenvector_future_thin.ttf; path = GAME3004Assignment3/Fonts/kenvector_future_thin.ttf; sourceTree = "<group>"; };
+		235D743A1E7A236A00DE916E /* UIVisualController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIVisualController.swift; sourceTree = "<group>"; };
 		23F490721E783944001F3249 /* ObserverSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverSystem.swift; sourceTree = "<group>"; };
 		23F490741E783A58001F3249 /* UIObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIObservable.swift; sourceTree = "<group>"; };
 		23F490761E783F80001F3249 /* ObserverTestObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverTestObject.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				23F490721E783944001F3249 /* ObserverSystem.swift */,
 				23F490741E783A58001F3249 /* UIObservable.swift */,
 				23F490761E783F80001F3249 /* ObserverTestObject.swift */,
+				235D743A1E7A236A00DE916E /* UIVisualController.swift */,
 			);
 			path = GAME3004Assignment3;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				18BDBD771E76FEDA00E13CD1 /* Button.swift in Sources */,
 				9865E8B61E74AAA900722B03 /* GameScene.swift in Sources */,
 				23F490771E783F80001F3249 /* ObserverTestObject.swift in Sources */,
+				235D743B1E7A236A00DE916E /* UIVisualController.swift in Sources */,
 				18BDBD751E76F8C600E13CD1 /* StartViewController.swift in Sources */,
 				23F490751E783A58001F3249 /* UIObservable.swift in Sources */,
 				9865E8B81E74AAA900722B03 /* GameViewController.swift in Sources */,
