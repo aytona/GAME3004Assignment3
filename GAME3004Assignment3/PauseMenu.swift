@@ -98,7 +98,7 @@ class PauseMenu : Observer
                 scene.size = view.bounds.size
                 
                 // Present the scene
-                view.presentScene(scene)
+                view.presentScene(scene, transition: SKTransition.doorway(withDuration: 1))
             }
             
             view.ignoresSiblingOrder = true
@@ -116,7 +116,7 @@ class PauseMenu : Observer
                 scene.size = view.bounds.size
                 
                 // Present the scene
-                view.presentScene(scene)
+                view.presentScene(scene, transition: SKTransition.doorsCloseVertical(withDuration: 1))
             }
             
             view.ignoresSiblingOrder = true

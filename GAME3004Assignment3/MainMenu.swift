@@ -89,7 +89,7 @@ class MainMenu : Observer
                 scene.size = view.bounds.size
                 
                 // Present the scene
-                view.presentScene(scene)
+                view.presentScene(scene, transition: SKTransition.doorsCloseVertical(withDuration: 1))
             }
             
             view.ignoresSiblingOrder = true
