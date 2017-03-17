@@ -40,10 +40,8 @@ class StartScene: SKScene {
         mainMenu?.SetKey((Instructions1?.Attach(mainMenu!))!, Instructions1!)
         mainMenu?.SetKey((Instructions2?.Attach(mainMenu!))!, Instructions2!)
         
-        inst1Panel  = (self.childNode(withName: "//Parent//Instructions1//InstructBubble1") as! SKSpriteNode)
-        inst2Panel  = (self.childNode(withName: "//Parent//Instructions2//InstructBubble2") as! SKSpriteNode)
-        
-    
+        inst1Panel  = (Instructions1?.childNode(withName: "//InstructBubble1") as! SKSpriteNode)
+        inst2Panel  = (Instructions2?.childNode(withName: "//InstructBubble2") as! SKSpriteNode)
         
         inst1Panel?.centerRect = CGRect(x: 25.0/100.0, y: 25.0/100.0, width: 50.0/100.0, height: 50.0/100.0)
         inst2Panel?.centerRect = CGRect(x: 25.0/100.0, y: 25.0/100.0, width: 50.0/100.0, height: 50.0/100.0)
@@ -51,8 +49,6 @@ class StartScene: SKScene {
         mainMenu?.SetupMainMenu(self)
         
         Title = self.childNode(withName: "//Parent//Title")
-        
-
     }
     
     func touchDown(atPoint pos : CGPoint) {
@@ -91,6 +87,5 @@ class StartScene: SKScene {
         {
             Title?.zRotation  = 0
         }
-
     }
 }
