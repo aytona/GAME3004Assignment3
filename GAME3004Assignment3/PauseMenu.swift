@@ -21,16 +21,26 @@ class PauseMenu : Observer
     {
         for (n, _) in m_keys
         {
+            // Do stuff when notified, by an observable object, here:
             if(n == observable.GetName())
             {
-                // Do stuff when notified, by an observable object, here:
-                if(isShowing)
+                switch(n)
                 {
-                    HideMenu()
-                }
-                else
-                {
-                    ShowMenu()
+                case "Pause":
+                    if(isShowing)
+                    {
+                        HideMenu()
+                    }
+                    else
+                    {
+                        ShowMenu()
+                    }
+                    case "Restart":
+                    ResetGame()
+                    case "Quit":
+                    GoToMenu()
+                default:
+                    break
                 }
             }
         }
@@ -57,10 +67,11 @@ class PauseMenu : Observer
     // Pause Menu functionality
     private var isShowing = false
     private var pauseMenu : SKNode?
-    
-    public func SetupPauseMenu(_ scene: SKScene)
+    private var scene : SKScene?
+    public func SetupPauseMenu(_ _scene: SKScene)
     {
-        pauseMenu = scene.childNode(withName: "//UI_PauseMenu")
+        scene = _scene
+        pauseMenu = _scene.childNode(withName: "//UI_PauseMenu")
         HideMenu()
     }
     
@@ -74,5 +85,41 @@ class PauseMenu : Observer
     {
         isShowing = false
         pauseMenu?.position = CGPoint(x: 2000, y: 2000)
+    }
+    
+    public func GoToMenu()
+    {
+        if let view = scene?.view {
+            // Load the SKScene from 'GameScene.sks'
+            if let scene = SKScene(fileNamed: "StartScene") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .resizeFill
+                
+                scene.size = view.bounds.size
+                
+                // Present the scene
+                view.presentScene(scene)
+            }
+            
+            view.ignoresSiblingOrder = true
+        }
+    }
+    
+    public func ResetGame()
+    {
+        if let view = scene?.view {
+            // Load the SKScene from 'GameScene.sks'
+            if let scene = SKScene(fileNamed: "GameScene") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .resizeFill
+                
+                scene.size = view.bounds.size
+                
+                // Present the scene
+                view.presentScene(scene)
+            }
+            
+            view.ignoresSiblingOrder = true
+        }
     }
 }

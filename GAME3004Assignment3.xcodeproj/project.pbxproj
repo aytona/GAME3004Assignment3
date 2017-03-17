@@ -13,6 +13,9 @@
 		2350E3FF1E78961400E21D63 /* kenvector_future_thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2350E3FD1E78961400E21D63 /* kenvector_future_thin.ttf */; };
 		235D743B1E7A236A00DE916E /* UIVisualController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D743A1E7A236A00DE916E /* UIVisualController.swift */; };
 		235D743D1E7A327600DE916E /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D743C1E7A327600DE916E /* PauseMenu.swift */; };
+		2390157D1E7C46930070E19E /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2390157C1E7C46930070E19E /* StartScene.sks */; };
+		2390157F1E7C52320070E19E /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2390157E1E7C52320070E19E /* StartScene.swift */; };
+		239015811E7C59E70070E19E /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239015801E7C59E70070E19E /* MainMenu.swift */; };
 		23F490731E783944001F3249 /* ObserverSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F490721E783944001F3249 /* ObserverSystem.swift */; };
 		23F490751E783A58001F3249 /* UIObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F490741E783A58001F3249 /* UIObservable.swift */; };
 		23F490771E783F80001F3249 /* ObserverTestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F490761E783F80001F3249 /* ObserverTestObject.swift */; };
@@ -52,6 +55,9 @@
 		2350E3FD1E78961400E21D63 /* kenvector_future_thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = kenvector_future_thin.ttf; path = GAME3004Assignment3/Fonts/kenvector_future_thin.ttf; sourceTree = "<group>"; };
 		235D743A1E7A236A00DE916E /* UIVisualController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIVisualController.swift; sourceTree = "<group>"; };
 		235D743C1E7A327600DE916E /* PauseMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseMenu.swift; sourceTree = "<group>"; };
+		2390157C1E7C46930070E19E /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
+		2390157E1E7C52320070E19E /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
+		239015801E7C59E70070E19E /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		23F490721E783944001F3249 /* ObserverSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverSystem.swift; sourceTree = "<group>"; };
 		23F490741E783A58001F3249 /* UIObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIObservable.swift; sourceTree = "<group>"; };
 		23F490761E783F80001F3249 /* ObserverTestObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverTestObject.swift; sourceTree = "<group>"; };
@@ -147,6 +153,9 @@
 				23F490761E783F80001F3249 /* ObserverTestObject.swift */,
 				235D743A1E7A236A00DE916E /* UIVisualController.swift */,
 				235D743C1E7A327600DE916E /* PauseMenu.swift */,
+				2390157C1E7C46930070E19E /* StartScene.sks */,
+				2390157E1E7C52320070E19E /* StartScene.swift */,
+				239015801E7C59E70070E19E /* MainMenu.swift */,
 			);
 			path = GAME3004Assignment3;
 			sourceTree = "<group>";
@@ -277,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9865E8BB1E74AAA900722B03 /* Main.storyboard in Resources */,
+				2390157D1E7C46930070E19E /* StartScene.sks in Resources */,
 				9865E8B21E74AAA900722B03 /* GameScene.sks in Resources */,
 				2350E3FF1E78961400E21D63 /* kenvector_future_thin.ttf in Resources */,
 				9865E8BD1E74AAA900722B03 /* Assets.xcassets in Resources */,
@@ -314,9 +324,11 @@
 				18BDBD751E76F8C600E13CD1 /* StartViewController.swift in Sources */,
 				23F490751E783A58001F3249 /* UIObservable.swift in Sources */,
 				9865E8B81E74AAA900722B03 /* GameViewController.swift in Sources */,
+				239015811E7C59E70070E19E /* MainMenu.swift in Sources */,
 				235D743D1E7A327600DE916E /* PauseMenu.swift in Sources */,
 				23F490731E783944001F3249 /* ObserverSystem.swift in Sources */,
 				9865E8B01E74AAA900722B03 /* AppDelegate.swift in Sources */,
+				2390157F1E7C52320070E19E /* StartScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

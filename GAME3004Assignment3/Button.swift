@@ -18,7 +18,7 @@ class Button: UIObservable
     init(_ _texture: SKTexture, _ w: Float, _ h: Float)
     {
         m_timer = 0.0
-        
+
         super.init(texture: _texture, color : UIColor.white, size : CGSize(width: CGFloat(w), height: CGFloat(h)))
         self.anchorPoint = CGPoint(x: 0, y: 0)
         self.isUserInteractionEnabled = true
