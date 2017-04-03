@@ -48,6 +48,11 @@ class PauseMenu : Observer
         
     }
     
+    func Call(_ observable: Observable, _ msg: ObservableMsg)
+    {
+        
+    }
+    
     func SetKey(_ key: Int, _ observable: Observable)
     {
         m_keys[observable.GetName()] = key

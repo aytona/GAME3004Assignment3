@@ -39,6 +39,14 @@ class UIObservable: SKSpriteNode, Observable
         }
     }
     
+    func Notify(_ msg: ObservableMsg)
+    {
+        for (key, _) in m_observers
+        {
+            m_observers[key]?.Call(self, msg)
+        }
+    }
+    
     func SetName(_ name: String)
     {
         m_name = name
