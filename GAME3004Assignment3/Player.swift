@@ -21,8 +21,7 @@ class Player : UIObservable
 {
     var Health : Int
     var PlayerID : Int
-    var Wins : Int
-    var Losses : Int
+    var Record : (win: Int,loss: Int)
     
     var startPoint : CGPoint
     var endPoint: CGPoint
@@ -32,8 +31,7 @@ class Player : UIObservable
     init(_ _texture: SKTexture, _ _playerID: Int) {
         self.Health = 5
         self.PlayerID = _playerID
-        self.Wins = 0
-        self.Losses = 0
+        self.Record = (0, 0)
         self.startPoint = CGPoint(x: 0,y: 0)
         self.endPoint = CGPoint(x: 0, y: 0)
         self.currentState = PlayerState.Default
@@ -51,8 +49,7 @@ class Player : UIObservable
     required init?(coder aDecoder: NSCoder) {
         self.Health = 5
         self.PlayerID = 0
-        self.Wins = 0
-        self.Losses = 0
+        self.Record = (0, 0)
         self.startPoint = CGPoint(x: 0,y: 0)
         self.endPoint = CGPoint(x: 0, y: 0)
         self.currentState = PlayerState.Default
@@ -63,6 +60,10 @@ class Player : UIObservable
 
     public func GetHealth() -> Int {
         return self.Health
+    }
+    
+    public func GetRecord() -> (Int, Int) {
+        return self.Record
     }
     
     public func GetPlayerState() ->PlayerState {
