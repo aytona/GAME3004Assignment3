@@ -52,6 +52,18 @@ class Button: UIObservable
                 self.Notify()
             }
         }
+        
+        // Action sequence example
+//        var action1 = SKAction()
+//        action1 = SKAction.move(to: CGPoint(x: self.position.x + 100, y: self.position.y), duration: 0.2)
+//        var action2 = SKAction()
+//        action2 = SKAction.move(to: self.position, duration: 0.2)
+//        
+//        let sequence = SKAction.sequence([action1, action2])
+//
+//        self.run(sequence)
+        // Action Sequence example
+
     }
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         //print("Touch Moved", self.name!)
