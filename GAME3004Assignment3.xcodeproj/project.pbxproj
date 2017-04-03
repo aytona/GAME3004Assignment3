@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		187731001E9292E0006B4BB2 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187730FF1E9292E0006B4BB2 /* Scene.swift */; };
 		18BDBD751E76F8C600E13CD1 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDBD741E76F8C600E13CD1 /* StartViewController.swift */; };
 		18BDBD771E76FEDA00E13CD1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDBD761E76FEDA00E13CD1 /* Button.swift */; };
 		2350E3FE1E78961400E21D63 /* kenpixel_blocks.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2350E3FC1E78961400E21D63 /* kenpixel_blocks.ttf */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		187730FF1E9292E0006B4BB2 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		18BDBD741E76F8C600E13CD1 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		18BDBD761E76FEDA00E13CD1 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		2350E3FC1E78961400E21D63 /* kenpixel_blocks.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = kenpixel_blocks.ttf; path = GAME3004Assignment3/Fonts/kenpixel_blocks.ttf; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				2390157C1E7C46930070E19E /* StartScene.sks */,
 				2390157E1E7C52320070E19E /* StartScene.swift */,
 				239015801E7C59E70070E19E /* MainMenu.swift */,
+				187730FF1E9292E0006B4BB2 /* Scene.swift */,
 			);
 			path = GAME3004Assignment3;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				9865E8B61E74AAA900722B03 /* GameScene.swift in Sources */,
 				23F490771E783F80001F3249 /* ObserverTestObject.swift in Sources */,
 				235D743B1E7A236A00DE916E /* UIVisualController.swift in Sources */,
+				187731001E9292E0006B4BB2 /* Scene.swift in Sources */,
 				18BDBD751E76F8C600E13CD1 /* StartViewController.swift in Sources */,
 				23F490751E783A58001F3249 /* UIObservable.swift in Sources */,
 				9865E8B81E74AAA900722B03 /* GameViewController.swift in Sources */,

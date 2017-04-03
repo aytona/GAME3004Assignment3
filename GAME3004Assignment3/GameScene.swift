@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: Scene {
     private var pauseButton : Button?
     private var restartButton : Button?
     private var quitButton : Button?

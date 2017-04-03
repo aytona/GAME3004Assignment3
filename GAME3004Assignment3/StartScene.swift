@@ -10,7 +10,7 @@ import SpriteKit
 import GameplayKit
 //import Accelerate
 
-class StartScene: SKScene {
+class StartScene: Scene {
     private var Player1Start : Button?
     private var Player2Start : Button?
     private var Instructions1 : Button?

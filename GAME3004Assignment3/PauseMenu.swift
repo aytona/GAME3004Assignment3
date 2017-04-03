@@ -8,6 +8,7 @@
 
 import Foundation
 import SpriteKit
+import GameKit
 
 class PauseMenu : Observer
 {
@@ -89,37 +90,47 @@ class PauseMenu : Observer
     
     public func GoToMenu()
     {
-        if let view = scene?.view {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "StartScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .resizeFill
+        // Load the SKScene from 'GameScene.sks'
+        if let scene = GKScene(fileNamed: "StartScene") {
+            
+            // Get the SKScene from the loaded GKScene
+            if let sceneNode = scene.rootNode as! Scene? {
                 
-                scene.size = view.bounds.size
+                /// Copy gameplay related content over to the scene
+                sceneNode.entities = scene.entities
+                sceneNode.graphs = scene.graphs
+                
+                sceneNode.scaleMode = .aspectFill
                 
                 // Present the scene
-                view.presentScene(scene, transition: SKTransition.doorway(withDuration: 1))
+                if let view = self.scene?.view {
+                    view.presentScene(sceneNode, transition: SKTransition.doorway(withDuration: 1))
+                    view.ignoresSiblingOrder = true
+                }
             }
-            
-            view.ignoresSiblingOrder = true
         }
     }
     
     public func ResetGame()
     {
-        if let view = scene?.view {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .resizeFill
+        // Load the SKScene from 'GameScene.sks'
+        if let scene = GKScene(fileNamed: "GameScene") {
+            
+            // Get the SKScene from the loaded GKScene
+            if let sceneNode = scene.rootNode as! Scene? {
                 
-                scene.size = view.bounds.size
+                /// Copy gameplay related content over to the scene
+                sceneNode.entities = scene.entities
+                sceneNode.graphs = scene.graphs
+                
+                sceneNode.scaleMode = .aspectFill
                 
                 // Present the scene
-                view.presentScene(scene, transition: SKTransition.doorsCloseVertical(withDuration: 1))
+                if let view = self.scene?.view {
+                    view.presentScene(sceneNode, transition: SKTransition.doorsCloseVertical(withDuration: 1))
+                    view.ignoresSiblingOrder = true
+                }
             }
-            
-            view.ignoresSiblingOrder = true
         }
     }
 }
