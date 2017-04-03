@@ -74,15 +74,27 @@ class Player : UIObservable
         let magPoint = VectorMagnitude(a: self.startPoint, b: self.endPoint)
         if self.startPoint.x / magPoint > 0 {
             self.currentState = PlayerState.Dodging
+            // Right
+            MoveSprite(direction: 1)
         } else if self.startPoint.x / magPoint < 0 {
             self.currentState = PlayerState.Dodging
+            // Left
+            MoveSprite(direction: -1)
         } else {
             self.currentState = PlayerState.Attacking
         }
     }
     
     private func MoveSprite(direction: CGFloat) {
-        
+        var action1 = SKAction()
+        action1 = SKAction.move(to: CGPoint(x: self.position.x + direction * 100, y: self.position.y), duration: 0.2)
+        var action2 = SKAction()
+        action2 = SKAction.move(to: self.position, duration: 0.2)
+
+        let sequence = SKAction.sequence([action1, action2])
+
+        self.run(sequence)
+        currentState = PlayerState.Default
     }
     
     private func VectorMagnitude(a: CGPoint, b: CGPoint) -> CGFloat {
@@ -99,6 +111,10 @@ class Player : UIObservable
         self.endPoint = pos
         if self.currentState == PlayerState.Default {
             ProcessMove()
+        }
+        if self.currentState == PlayerState.Dodging
+        {
+            //MoveSprite(direction: VectorMagnitude(a: self.startPoint, b: pos))
         }
     }
     
