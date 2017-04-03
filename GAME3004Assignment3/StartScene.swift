@@ -35,6 +35,9 @@ class StartScene: Scene {
         Instructions1?.SetName("Instructions1")
         Instructions2?.SetName("Instructions2")
         
+        Player1Start?.SetTimer(1);
+        Player2Start?.SetTimer(1);
+        
         mainMenu?.SetKey((Player1Start?.Attach(mainMenu!))!, Player1Start!)
         mainMenu?.SetKey((Player2Start?.Attach(mainMenu!))!, Player2Start!)
         mainMenu?.SetKey((Instructions1?.Attach(mainMenu!))!, Instructions1!)
@@ -82,10 +85,12 @@ class StartScene: Scene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        Title?.zRotation = (Title?.zRotation)! + CGFloat(currentTime * 0.000001)
+        Title?.zRotation = (Title?.zRotation)! + CGFloat(currentTime * 0.0000001)
         if((Title?.zRotation)! > CGFloat(M_PI * 2))
         {
             Title?.zRotation  = 0
         }
+        
+        mainMenu?.Update()
     }
 }

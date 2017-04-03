@@ -249,6 +249,7 @@
 				TargetAttributes = {
 					9865E8AB1E74AAA900722B03 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 44JW5262XQ;
 						ProvisioningStyle = Automatic;
 					};
 					9865E8C51E74AAAA00722B03 = {
@@ -484,6 +485,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 44JW5262XQ;
 				INFOPLIST_FILE = GAME3004Assignment3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Aytona.GAME3004Assignment3;
@@ -496,6 +498,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 44JW5262XQ;
 				INFOPLIST_FILE = GAME3004Assignment3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Aytona.GAME3004Assignment3;

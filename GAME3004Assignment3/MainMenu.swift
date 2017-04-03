@@ -30,9 +30,9 @@ class MainMenu : Observer
                     case "Instructions2":
                         ToggleButton(1)
                     case "Player1Start":
-                        StartGame();
+                        SetReady(1, true)
                     case "Player2Start":
-                        StartGame();
+                        SetReady(2, true)
                 default:
                     print("There is no default")
                     break
@@ -40,6 +40,41 @@ class MainMenu : Observer
             }
         }
         
+    }
+    
+    func Call(_ observable: Observable, _ msg: ObservableMsg)
+    {
+        for (n, _) in m_keys
+        {
+            if(n == observable.GetName())
+            {
+                switch(n) {
+                case "Player1Start":
+                    if(msg as! ButtonMsgPacket).GetMsgType() == .touchBegan
+                    {
+                        // Show visuals
+                    }
+                    else if (msg as! ButtonMsgPacket).GetMsgType() == .touchEnded
+                    {
+                        // Show visuals
+                        self.SetReady(1, false)
+                    }
+                case "Player2Start":
+                    if(msg as! ButtonMsgPacket).GetMsgType() == .touchBegan
+                    {
+                        // Show visuals
+                    }
+                    else if (msg as! ButtonMsgPacket).GetMsgType() == .touchEnded
+                    {
+                        // Show visuals
+                        self.SetReady(2, false)
+                    }
+                default:
+                    print("There is no default")
+                    break
+                }
+            }
+        }
     }
     
     func SetKey(_ key: Int, _ observable: Observable)
@@ -66,6 +101,9 @@ class MainMenu : Observer
     private var ToggleArray = [false, false]
     private var ButtonName = ["//X", "//Y"]
     
+    private var p1Ready = false;
+    private var p2Ready = false;
+    
     private var scene : SKScene?
     
     public func SetupMainMenu(_ _scene: SKScene)
@@ -78,6 +116,21 @@ class MainMenu : Observer
         HideBubble(0)
         HideBubble(1)
         
+    }
+    
+    public func SetReady(_ player: Int, _ state: Bool)
+    {
+        switch(player)
+        {
+        case 1:
+            p1Ready = state
+            break
+        case 2:
+            p2Ready = state
+            break
+        default:
+            break
+        }
     }
     
     public func StartGame() {
@@ -122,6 +175,14 @@ class MainMenu : Observer
             ShowBubble(index)
         } else {
             HideBubble(index)
+        }
+    }
+    
+    public func Update()
+    {
+        if(p1Ready && p2Ready)
+        {
+            StartGame()
         }
     }
 }
