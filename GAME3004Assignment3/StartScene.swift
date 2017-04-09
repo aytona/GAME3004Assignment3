@@ -52,6 +52,14 @@ class StartScene: Scene {
         mainMenu?.SetupMainMenu(self)
         
         Title = self.childNode(withName: "//Parent//Title")
+        
+        let emmiter = SKEmitterNode(fileNamed: "MainMenuSpark.sks")
+        emmiter?.name = "Rain"
+        emmiter?.position = CGPoint(x: 0, y: 0)
+        emmiter?.targetNode = self.scene?.childNode(withName: "//Parent")
+        self.scene?.childNode(withName: "//Parent")?.addChild(emmiter!)
+        emmiter?.particleZPosition = -1000
+        emmiter?.isUserInteractionEnabled = false
     }
     
     func touchDown(atPoint pos : CGPoint) {

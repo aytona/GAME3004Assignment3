@@ -53,21 +53,33 @@ class MainMenu : Observer
                     if(msg as! ButtonMsgPacket).GetMsgType() == .touchBegan
                     {
                         // Show visuals
+                        Player1Shape.xScale = 3
+                        Player1Shape.yScale = 3
+                        //p1Touched = true
+                        Player1Shape.run(p1ButtonScale)
                     }
                     else if (msg as! ButtonMsgPacket).GetMsgType() == .touchEnded
                     {
-                        // Show visuals
+                        // Remove visuals
                         self.SetReady(1, false)
+                        //p1Touched = false
+                        Player1Shape.xScale = 0
                     }
                 case "Player2Start":
                     if(msg as! ButtonMsgPacket).GetMsgType() == .touchBegan
                     {
                         // Show visuals
+                        Player2Shape.xScale = 3
+                        Player2Shape.yScale = 3
+                        //p2Touched = true
+                        Player2Shape.run(p2ButtonScale)
                     }
                     else if (msg as! ButtonMsgPacket).GetMsgType() == .touchEnded
                     {
-                        // Show visuals
+                        // Remove visuals
                         self.SetReady(2, false)
+                        //p2Touched = false
+                        Player2Shape.xScale = 0
                     }
                 default:
                     //print("There is no default")
@@ -101,8 +113,19 @@ class MainMenu : Observer
     private var ToggleArray = [false, false]
     private var ButtonName = ["//X", "//Y"]
     
+    private var Player1Button : SKNode?
+    private var Player2Button : SKNode?
+    private let Player1Shape : SKShapeNode = SKShapeNode(circleOfRadius: 100)
+    private let Player2Shape : SKShapeNode = SKShapeNode(circleOfRadius: 100)
+    private var p1Touched = false
+    private var p2Touched = false
+    private let p1ButtonScale = SKAction.scale(to: 1.1, duration: 1)
+    private let p2ButtonScale = SKAction.scale(to: 1.1, duration: 1)
+    
     private var p1Ready = false;
     private var p2Ready = false;
+    private var ReadyLabel1 : SKLabelNode?
+    private var ReadyLabel2 : SKLabelNode?
     
     private var scene : SKScene?
     
@@ -116,6 +139,25 @@ class MainMenu : Observer
         HideBubble(0)
         HideBubble(1)
         
+        Player1Button = _scene.childNode(withName: "//Parent//Player1Start")
+        Player1Shape.lineWidth = 5
+        Player1Shape.glowWidth = 5
+        Player1Shape.strokeColor = #colorLiteral(red: 1, green: 0.3525168598, blue: 0.06298581511, alpha: 1)
+        Player1Button?.addChild(Player1Shape)
+        Player1Shape.xScale = 0
+        Player1Shape.position = CGPoint(x: 0, y: 0)
+        
+        Player2Button = _scene.childNode(withName: "//Parent//Player2Start")
+        Player2Shape.lineWidth = 5
+        Player2Shape.glowWidth = 5
+        Player2Shape.strokeColor = #colorLiteral(red: 0.1322018504, green: 0.6908912063, blue: 0.897411108, alpha: 1)
+        Player2Button?.addChild(Player2Shape)
+        Player2Shape.xScale = 0
+        Player2Shape.position = CGPoint(x: 0, y: 0)
+        
+        ReadyLabel1 = (_scene.childNode(withName: "//Parent//Player1Start//ReadyLabel") as! SKLabelNode)
+        ReadyLabel2 = (_scene.childNode(withName: "//Parent//Player2Start//ReadyLabel") as! SKLabelNode)
+        
         SetFont()
         
     }
@@ -123,18 +165,11 @@ class MainMenu : Observer
     private func SetFont()
     {
         let _ = (scene?.childNode (withName: "//Parent//Inst1//InstructBubble1//InstLabel1") as! SKLabelNode).fontName = "kenvector-future-thin"
-        
         let _ = (scene?.childNode (withName: "//Parent//Inst1//InstructBubble1//InstLabel2") as! SKLabelNode).fontName = "kenvector-future-thin"
-
         let _ = (scene?.childNode (withName: "//Parent//Inst1//InstructBubble1//InstTitle") as! SKLabelNode).fontName = "kenvector-future-thin"
-        
         let _ = (scene?.childNode (withName: "//Parent//Inst2//InstructBubble2//InstLabel1") as! SKLabelNode).fontName = "kenvector-future-thin"
-        
         let _ = (scene?.childNode (withName: "//Parent//Inst2//InstructBubble2//InstLabel2") as! SKLabelNode).fontName = "kenvector-future-thin"
-        
         let _ = (scene?.childNode (withName: "//Parent//Inst2//InstructBubble2//InstTitle") as! SKLabelNode).fontName = "kenvector-future-thin"
-        
-        
     }
     
     public func SetReady(_ player: Int, _ state: Bool)
@@ -143,12 +178,33 @@ class MainMenu : Observer
         {
         case 1:
             p1Ready = state
+            if(state == true)
+            {
+                ReadyLabel1?.text = "READY!"
+            }
+            else
+            {
+                ReadyLabel1?.text = "Hold To Start"
+            }
             break
         case 2:
             p2Ready = state
+            if(state == true)
+            {
+                ReadyLabel2?.text = "READY!"
+            }
+            else
+            {
+                ReadyLabel2?.text = "Hold To Start"
+            }
             break
         default:
             break
+        }
+        
+        if(p1Ready && p2Ready)
+        {
+            StartGame()
         }
     }
     
@@ -199,9 +255,6 @@ class MainMenu : Observer
     
     public func Update()
     {
-        if(p1Ready && p2Ready)
-        {
-            StartGame()
-        }
+
     }
 }
