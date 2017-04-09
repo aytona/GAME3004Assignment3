@@ -73,6 +73,7 @@ class Button: UIObservable
         newMsg.SetMsgType(.touchEnded)
         m_isTouching = false
         self.Notify(newMsg)
+        self.removeAllActions()
         //print("Touch Ended", self.name!)
     }
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -81,6 +82,7 @@ class Button: UIObservable
         newMsg.SetMsgType(.touchEnded)
         m_isTouching = false
         self.Notify(newMsg)
+        self.removeAllActions()
     }
 }
 

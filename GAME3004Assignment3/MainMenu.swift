@@ -64,6 +64,7 @@ class MainMenu : Observer
                         self.SetReady(1, false)
                         //p1Touched = false
                         Player1Shape.xScale = 0
+                        Player1Shape.removeAllActions()
                     }
                 case "Player2Start":
                     if(msg as! ButtonMsgPacket).GetMsgType() == .touchBegan
@@ -79,6 +80,7 @@ class MainMenu : Observer
                         // Remove visuals
                         self.SetReady(2, false)
                         //p2Touched = false
+                        Player2Shape.removeAllActions()
                         Player2Shape.xScale = 0
                     }
                 default:

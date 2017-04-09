@@ -31,6 +31,8 @@ class Player : UIObservable
     
     var currentState: PlayerState
     
+    var particles : ParticleEmitter?
+    
     init(_ _texture: SKTexture, _ _playerID: Int, _ _staminaBar: SKSpriteNode) {
         self.Health = 3
         self.Stamina = 100
@@ -49,6 +51,8 @@ class Player : UIObservable
             
         self.isUserInteractionEnabled = true
         
+        self.particles = ParticleEmitter(self.size.height)
+        
         self.PlayerUpdate()
         self.RecoverStamina()
     }
@@ -61,9 +65,11 @@ class Player : UIObservable
         self.startPoint = CGPoint(x: 0,y: 0)
         self.endPoint = CGPoint(x: 0, y: 0)
         self.currentState = PlayerState.Default
-        
+
         super.init(coder: aDecoder)
         self.isUserInteractionEnabled = true
+        
+        self.particles = ParticleEmitter(self.size.height)
         
         self.PlayerUpdate()
         self.RecoverStamina()
@@ -97,6 +103,8 @@ class Player : UIObservable
             self.Health = 0
             self.currentState = PlayerState.Dead
         }
+        
+        particles?.HitParticles()
     }
     
     public func SubPlayerStamina(amount: Int) {
@@ -132,6 +140,8 @@ class Player : UIObservable
 
         let sequence = SKAction.sequence([action1, action2, SKAction.run({ self.BackToDefault() })])
 
+        particles?.DodgeParticles(direction)
+        
         self.run(sequence)
     }
     
@@ -145,6 +155,8 @@ class Player : UIObservable
         
         let sequence = SKAction.sequence([action1, action2, SKAction.run({ self.BackToDefault() })])
         
+        particles?.AttackParticles()
+        
         self.run(sequence)
     }
     
@@ -154,6 +166,8 @@ class Player : UIObservable
             let sequence = SKAction.sequence([rotate, SKAction.run({ self.ExhaustedSprite() })])
             
             self.run(sequence)
+            
+            particles?.DizzyParticles()
         } else {
             self.run(SKAction.rotate(toAngle: CGFloat(0), duration: 0.1))
         }
