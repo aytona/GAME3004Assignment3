@@ -34,27 +34,33 @@ class ParticleEmitter: SKNode
     
     public func AttackParticles()
     {
-        print("Particles: Attack")
+        self.attackEmitter?.removeFromParent()
+        self.removeAction(forKey: "attackWait")
+        
         attackEmitter = SKEmitterNode(fileNamed: "BattleAttack.sks")
-        attackEmitter?.position = CGPoint(x: 0, y: 0)
-        attackEmitter?.targetNode = self
+        attackEmitter?.name = "attackEmitter"
+        attackEmitter?.targetNode = self.scene?.childNode(withName: "//Parent")
         self.addChild(attackEmitter!)
+        attackEmitter?.position = CGPoint(x: 0, y: 0)
         attackEmitter?.position.y = (attackEmitter?.position.y)! + attackSpawnDistance
         
         let wait = SKAction.wait(forDuration: 1.2)
-        self.run(wait)
-        {
-            self.attackEmitter?.removeFromParent()
-            print("Removing particles")
-        }
+        let destroy = SKAction.run(SKAction.removeFromParent()
+            , onChildWithName: (attackEmitter?.name)!)
+        let lifeSequence = SKAction.sequence([wait, destroy])
+        
+        self.run(lifeSequence, withKey: "attackWait")
     }
     
     public func DodgeParticles(_ direction : CGFloat)
     {
-        print("Particles: Dodge")
+        self.dodgeEmitter?.removeFromParent()
+        self.removeAction(forKey: "dodgeWait")
+        
         dodgeEmitter = SKEmitterNode(fileNamed: "BattleDodge.sks")
+        dodgeEmitter?.name = "dodgeEmitter"
         dodgeEmitter?.position = CGPoint(x: 0, y: 0)
-        dodgeEmitter?.targetNode = self
+        dodgeEmitter?.targetNode = self.scene?.childNode(withName: "//Parent")
         self.addChild(dodgeEmitter!)
         
         if(direction < 0)
@@ -63,39 +69,52 @@ class ParticleEmitter: SKNode
         }
         
         let wait = SKAction.wait(forDuration: 0.5)
-        self.run(wait)
-        {
-            self.dodgeEmitter?.removeFromParent()
-        }
+        let destroy = SKAction.run(SKAction.removeFromParent()
+            , onChildWithName: (dodgeEmitter?.name)!)
+        let lifeSequence = SKAction.sequence([wait, destroy])
+        
+        self.run(lifeSequence, withKey: "dodgeWait")
     }
     
     public func HitParticles()
     {
-        print("Particles: Hit")
+        self.hitEmitter?.removeFromParent()
+        self.removeAction(forKey: "hitWait")
+        
         hitEmitter = SKEmitterNode(fileNamed: "BattleHit.sks")
-        hitEmitter?.position = CGPoint(x: 0, y: 0)
-        hitEmitter?.targetNode = self
+        hitEmitter?.name = "hitEmitter"
+        hitEmitter?.targetNode = self.scene?.childNode(withName: "//Parent")
         self.addChild(hitEmitter!)
+        hitEmitter?.position = CGPoint(x: 0, y: 0)
+        hitEmitter?.position.y = (attackEmitter?.position.y)! + attackSpawnDistance
         
         let wait = SKAction.wait(forDuration: 0.7)
-        self.run(wait)
-        {
-            self.hitEmitter?.removeFromParent()
-        }
+        let destroy = SKAction.run(SKAction.removeFromParent()
+            , onChildWithName: (hitEmitter?.name)!)
+        let lifeSequence = SKAction.sequence([wait, destroy])
+        
+        self.run(lifeSequence, withKey: "hitWait")
     }
     
     public func DizzyParticles()
     {
-        print("Particles: Dizzy")
-        dizzyEmitter = SKEmitterNode(fileNamed: "BattleDizzy.sks")
-        dizzyEmitter?.position = CGPoint(x: 0, y: 0)
-        dizzyEmitter?.targetNode = self
-        self.addChild(dizzyEmitter!)
-        
-        let wait = SKAction.wait(forDuration: 1.7)
-        self.run(wait)
+        if(dizzyEmitter == nil)
         {
             self.dizzyEmitter?.removeFromParent()
+            self.removeAction(forKey: "dizzyWait")
+
+            dizzyEmitter = SKEmitterNode(fileNamed: "BattleDizzy.sks")
+            dizzyEmitter?.name = "dizzyEmitter"
+            dizzyEmitter?.targetNode = self.scene?.childNode(withName: "//Parent")
+            self.addChild(dizzyEmitter!)
+            dizzyEmitter?.position = CGPoint(x: 0, y: 0)
+            
+            let wait = SKAction.wait(forDuration: 3)
+            let destroy = SKAction.run(SKAction.removeFromParent()
+                , onChildWithName: (dizzyEmitter?.name)!)
+            let lifeSequence = SKAction.sequence([wait, destroy])
+            
+            self.run(lifeSequence, withKey: "dizzyWait")
         }
     }
 }
