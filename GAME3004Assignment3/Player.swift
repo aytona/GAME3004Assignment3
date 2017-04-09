@@ -15,11 +15,14 @@ enum PlayerState {
     case Attacking
     case Dodging
     case Default
+    case Exhausted
+    case Dead
 }
 
 class Player : UIObservable
 {
     var Health : Int
+    var Stamina : Int
     var PlayerID : Int
     var Record : (win: Int,loss: Int)
     
@@ -28,8 +31,9 @@ class Player : UIObservable
     
     var currentState: PlayerState
     
-    init(_ _texture: SKTexture, _ _playerID: Int) {
-        self.Health = 5
+    init(_ _texture: SKTexture, _ _playerID: Int, _ _staminaBar: SKSpriteNode) {
+        self.Health = 3
+        self.Stamina = 100
         self.PlayerID = _playerID
         self.Record = (0, 0)
         self.startPoint = CGPoint(x: 0,y: 0)
@@ -44,10 +48,14 @@ class Player : UIObservable
         }
             
         self.isUserInteractionEnabled = true
+        
+        self.PlayerUpdate()
+        self.RecoverStamina()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.Health = 5
+        self.Health = 3
+        self.Stamina = 100
         self.PlayerID = 0
         self.Record = (0, 0)
         self.startPoint = CGPoint(x: 0,y: 0)
@@ -56,8 +64,11 @@ class Player : UIObservable
         
         super.init(coder: aDecoder)
         self.isUserInteractionEnabled = true
+        
+        self.PlayerUpdate()
+        self.RecoverStamina()
     }
-
+    
     public func GetHealth() -> Int {
         return self.Health
     }
@@ -68,6 +79,32 @@ class Player : UIObservable
     
     public func GetPlayerState() ->PlayerState {
         return self.currentState
+    }
+    
+    public func GetPlayerStamina() -> Int {
+        return self.Stamina
+    }
+    
+    public func AddRecord(win: Int, loss: Int) {
+        self.Record.win = self.Record.win + win
+        self.Record.loss = self.Record.loss + loss
+    }
+    
+    public func HitPlayer() {
+        if self.Health - 1 > 0 {
+            self.Health = self.Health - 1
+        } else {
+            self.Health = 0
+            self.currentState = PlayerState.Dead
+        }
+    }
+    
+    public func SubPlayerStamina(amount: Int) {
+        if self.Stamina - amount <= 0 {
+            self.Stamina = 0
+        } else {
+            self.Stamina = self.Stamina - amount
+        }
     }
     
     private func ProcessMove() {
@@ -86,6 +123,8 @@ class Player : UIObservable
     }
     
     private func DodgeSprite(direction: CGFloat) {
+        SubPlayerStamina(amount: 20)
+        
         var action1 = SKAction()
         action1 = SKAction.move(to: CGPoint(x: self.position.x + direction * 100, y: self.position.y), duration: 0.2)
         var action2 = SKAction()
@@ -97,18 +136,78 @@ class Player : UIObservable
     }
     
     private func AttackSprite() {
+        SubPlayerStamina(amount: 15)
+        
         var action1 = SKAction()
-        action1 = SKAction.move(to: CGPoint(x: self.position.x, y: self.position.y + 100), duration: 0.2)
+        action1 = SKAction.move(to: CGPoint(x: self.position.x, y: self.position.y + 100), duration: 0.1)
         var action2 = SKAction()
-        action2 = SKAction.move(to: self.position, duration: 0.2)
+        action2 = SKAction.move(to: self.position, duration: 0.1)
         
         let sequence = SKAction.sequence([action1, action2, SKAction.run({ self.BackToDefault() })])
         
         self.run(sequence)
     }
     
+    private func ExhaustedSprite() {
+        if self.Stamina < 100 {
+            let rotate = SKAction.rotate(byAngle: CGFloat(5), duration: 1.0)
+            let sequence = SKAction.sequence([rotate, SKAction.run({ self.ExhaustedSprite() })])
+            
+            self.run(sequence)
+        } else {
+            self.run(SKAction.rotate(toAngle: CGFloat(0), duration: 0.1))
+        }
+    }
+    
+    private func RecoverStamina() {
+        let StaminaHeal = SKAction.run {
+            if self.Stamina < 100 {
+                if 100 - self.Stamina > 5 {
+                    self.Stamina = self.Stamina + 5
+                } else {
+                    self.Stamina = 100
+                }
+            }
+        }
+        
+        if self.Stamina > 0 && self.currentState != PlayerState.Exhausted{
+            let sequence = SKAction.sequence([StaminaHeal, SKAction.wait(forDuration: 1.5), SKAction.run({ self.RecoverStamina() })])
+            self.run(sequence)
+        } else {
+            let sequence = SKAction.sequence([StaminaHeal, SKAction.wait(forDuration: 0.5), SKAction.run({ self.RecoverStamina() })])
+            self.run(sequence)
+        }
+    }
+    
+    private func PlayerUpdate() {
+        // Exhausted Check
+        print(self.Stamina)
+        var ExhaustedAction = SKAction()
+        if self.Stamina <= 0 && self.currentState != PlayerState.Exhausted {
+            self.currentState = PlayerState.Exhausted
+            ExhaustedAction = SKAction.run {
+                self.ExhaustedSprite()
+            }
+        }
+        if self.Stamina == 100 && self.currentState != PlayerState.Dead {
+            self.currentState = PlayerState.Default
+        }
+        
+        // Death Check
+        //var DeathAction = SKAction()
+        if self.Health <= 0 && self.currentState != PlayerState.Dead {
+            self.currentState = PlayerState.Dead
+        }
+        
+        let sequence = SKAction.sequence([ExhaustedAction, /*DeathAction,*/ SKAction.wait(forDuration: 0.1), SKAction.run({ self.PlayerUpdate() })])
+        
+        self.run(sequence)
+    }
+    
     private func BackToDefault() {
-        self.currentState = PlayerState.Default
+        if self.currentState != PlayerState.Dead || self.Stamina == 100 {
+            self.currentState = PlayerState.Default
+        }
     }
     
     func touchDown(atPoint pos : CGPoint) {
