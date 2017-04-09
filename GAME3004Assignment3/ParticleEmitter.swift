@@ -34,6 +34,7 @@ class ParticleEmitter: SKNode
     
     public func AttackParticles()
     {
+        print("Particles: Attack")
         attackEmitter = SKEmitterNode(fileNamed: "BattleAttack.sks")
         attackEmitter?.position = CGPoint(x: 0, y: 0)
         attackEmitter?.targetNode = self
@@ -44,11 +45,13 @@ class ParticleEmitter: SKNode
         self.run(wait)
         {
             self.attackEmitter?.removeFromParent()
+            print("Removing particles")
         }
     }
     
     public func DodgeParticles(_ direction : CGFloat)
     {
+        print("Particles: Dodge")
         dodgeEmitter = SKEmitterNode(fileNamed: "BattleDodge.sks")
         dodgeEmitter?.position = CGPoint(x: 0, y: 0)
         dodgeEmitter?.targetNode = self
@@ -68,6 +71,7 @@ class ParticleEmitter: SKNode
     
     public func HitParticles()
     {
+        print("Particles: Hit")
         hitEmitter = SKEmitterNode(fileNamed: "BattleHit.sks")
         hitEmitter?.position = CGPoint(x: 0, y: 0)
         hitEmitter?.targetNode = self
@@ -82,6 +86,7 @@ class ParticleEmitter: SKNode
     
     public func DizzyParticles()
     {
+        print("Particles: Dizzy")
         dizzyEmitter = SKEmitterNode(fileNamed: "BattleDizzy.sks")
         dizzyEmitter?.position = CGPoint(x: 0, y: 0)
         dizzyEmitter?.targetNode = self

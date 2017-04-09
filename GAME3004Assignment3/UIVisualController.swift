@@ -34,8 +34,6 @@ class UIVisualController
     {
         let P1Label : SKLabelNode = scene.childNode(withName: "//UI_Player1//Player1Label") as! SKLabelNode
         let P2Label : SKLabelNode = scene.childNode(withName: "//UI_Player2//Player2Label") as! SKLabelNode
-        let P1Message : SKLabelNode = scene.childNode(withName: "//UI_Player1//Player1Message") as! SKLabelNode
-        let P2Message : SKLabelNode = scene.childNode(withName: "//UI_Player1//Player1Message") as! SKLabelNode
         
         let pauseLabel : SKLabelNode = scene.childNode(withName: "//UI_PauseMenu//PausePanel//PauseLabel") as! SKLabelNode
         let restartButton : SKLabelNode = scene.childNode(withName: "//UI_PauseMenu//PausePanel//RestartButton//Label") as! SKLabelNode
@@ -43,8 +41,6 @@ class UIVisualController
         
         P1Label.fontName = "kenpixel-blocks"
         P2Label.fontName = "kenpixel-blocks"
-        P1Message.fontName = "kenvector-future-thin"
-        P2Message.fontName = "kenvector-future-thin"
         
         pauseLabel.fontName = "kenvector-future-thin"
         restartButton.fontName = "kenpixel-blocks"
