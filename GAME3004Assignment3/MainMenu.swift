@@ -34,7 +34,7 @@ class MainMenu : Observer
                     case "Player2Start":
                         SetReady(2, true)
                 default:
-                    print("There is no default")
+                    //print("There is no default")
                     break
                 }
             }
@@ -70,7 +70,7 @@ class MainMenu : Observer
                         self.SetReady(2, false)
                     }
                 default:
-                    print("There is no default")
+                    //print("There is no default")
                     break
                 }
             }
@@ -109,12 +109,31 @@ class MainMenu : Observer
     public func SetupMainMenu(_ _scene: SKScene)
     {
         scene = _scene
-        Instruct1 = _scene.childNode(withName: "//Parent//Instructions1//InstructBubble1")
-        Instruct2 = _scene.childNode(withName: "//Parent//Instructions2//InstructBubble2")
+        Instruct1 = _scene.childNode(withName: "//Parent//Inst1")
+        Instruct2 = _scene.childNode(withName: "//Parent//Inst2")
         BubbleArray.append(Instruct1!)
         BubbleArray.append(Instruct2!)
         HideBubble(0)
         HideBubble(1)
+        
+        SetFont()
+        
+    }
+    
+    private func SetFont()
+    {
+        let _ = (scene?.childNode (withName: "//Parent//Inst1//InstructBubble1//InstLabel1") as! SKLabelNode).fontName = "kenvector-future-thin"
+        
+        let _ = (scene?.childNode (withName: "//Parent//Inst1//InstructBubble1//InstLabel2") as! SKLabelNode).fontName = "kenvector-future-thin"
+
+        let _ = (scene?.childNode (withName: "//Parent//Inst1//InstructBubble1//InstTitle") as! SKLabelNode).fontName = "kenvector-future-thin"
+        
+        let _ = (scene?.childNode (withName: "//Parent//Inst2//InstructBubble2//InstLabel1") as! SKLabelNode).fontName = "kenvector-future-thin"
+        
+        let _ = (scene?.childNode (withName: "//Parent//Inst2//InstructBubble2//InstLabel2") as! SKLabelNode).fontName = "kenvector-future-thin"
+        
+        let _ = (scene?.childNode (withName: "//Parent//Inst2//InstructBubble2//InstTitle") as! SKLabelNode).fontName = "kenvector-future-thin"
+        
         
     }
     
