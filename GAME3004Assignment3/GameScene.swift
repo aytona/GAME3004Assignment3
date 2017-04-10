@@ -39,17 +39,16 @@ class GameScene: Scene {
         
         gameOverOverlay = self.childNode(withName: "//UI_GameOverMenu")
         gameOverOverlay?.xScale = 0
-        
     }
     
     
     func touchDown(atPoint pos : CGPoint) {
-        gameOverOverlay?.xScale = 1
-        
-        if(pos.y > 0)
-        {
-            gameOverOverlay?.zRotation = CGFloat(M_PI)
-        }
+//        gameOverOverlay?.xScale = 1
+//        
+//        if(pos.y > 0)
+//        {
+//            gameOverOverlay?.zRotation = CGFloat.pi
+//        }
     }
     
     func touchMoved(toPoint pos : CGPoint) {

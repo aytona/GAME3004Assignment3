@@ -54,6 +54,7 @@ class Player : UIObservable
         self.particles = ParticleEmitter(self.size.height)
         self.addChild(particles!)
         self.particles?.position = CGPoint(x: 0, y: 0)
+        self.particles?.zRotation = 0
         
         self.PlayerUpdate()
         self.RecoverStamina()
@@ -74,6 +75,7 @@ class Player : UIObservable
         self.particles = ParticleEmitter(self.size.height)
         self.addChild(particles!)
         self.particles?.position = CGPoint(x: 0, y: 0)
+        self.particles?.zRotation = 0
         
         self.PlayerUpdate()
         self.RecoverStamina()

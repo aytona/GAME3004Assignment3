@@ -39,10 +39,13 @@ class ParticleEmitter: SKNode
         
         attackEmitter = SKEmitterNode(fileNamed: "BattleAttack.sks")
         attackEmitter?.name = "attackEmitter"
-        attackEmitter?.targetNode = self.scene?.childNode(withName: "//Parent")
+        attackEmitter?.targetNode = self.parent?.parent
         self.addChild(attackEmitter!)
+        
         attackEmitter?.position = CGPoint(x: 0, y: 0)
         attackEmitter?.position.y = (attackEmitter?.position.y)! + attackSpawnDistance
+        attackEmitter?.zRotation = 0
+        attackEmitter?.particleScale = 0.6
         
         let wait = SKAction.wait(forDuration: 1.2)
         let destroy = SKAction.run(SKAction.removeFromParent()
@@ -59,13 +62,15 @@ class ParticleEmitter: SKNode
         
         dodgeEmitter = SKEmitterNode(fileNamed: "BattleDodge.sks")
         dodgeEmitter?.name = "dodgeEmitter"
-        dodgeEmitter?.position = CGPoint(x: 0, y: 0)
         dodgeEmitter?.targetNode = self.scene?.childNode(withName: "//Parent")
         self.addChild(dodgeEmitter!)
         
+        dodgeEmitter?.position = CGPoint(x: 0, y: 0)
+        dodgeEmitter?.zRotation = 0
+        
         if(direction < 0)
         {
-            dodgeEmitter?.zRotation = 180
+            dodgeEmitter?.xAcceleration = (dodgeEmitter?.xAcceleration)! * -1
         }
         
         let wait = SKAction.wait(forDuration: 0.5)
@@ -85,8 +90,10 @@ class ParticleEmitter: SKNode
         hitEmitter?.name = "hitEmitter"
         hitEmitter?.targetNode = self.scene?.childNode(withName: "//Parent")
         self.addChild(hitEmitter!)
+        
         hitEmitter?.position = CGPoint(x: 0, y: 0)
-        hitEmitter?.position.y = (attackEmitter?.position.y)! + attackSpawnDistance
+        hitEmitter?.position.y = (attackEmitter?.position.y)! + attackSpawnDistance/2
+        hitEmitter?.zRotation = 0
         
         let wait = SKAction.wait(forDuration: 0.7)
         let destroy = SKAction.run(SKAction.removeFromParent()
@@ -107,7 +114,9 @@ class ParticleEmitter: SKNode
             dizzyEmitter?.name = "dizzyEmitter"
             dizzyEmitter?.targetNode = self.scene?.childNode(withName: "//Parent")
             self.addChild(dizzyEmitter!)
+            
             dizzyEmitter?.position = CGPoint(x: 0, y: 0)
+            dizzyEmitter?.zRotation = 0
             
             let wait = SKAction.wait(forDuration: 3)
             let destroy = SKAction.run(SKAction.removeFromParent()

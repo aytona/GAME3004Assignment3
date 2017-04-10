@@ -94,7 +94,7 @@ class StartScene: Scene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         Title?.zRotation = (Title?.zRotation)! + CGFloat(currentTime * 0.0000001)
-        if((Title?.zRotation)! > CGFloat(M_PI * 2))
+        if((Title?.zRotation)! > CGFloat(CGFloat.pi * 2))
         {
             Title?.zRotation  = 0
         }
