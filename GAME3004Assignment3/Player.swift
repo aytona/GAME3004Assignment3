@@ -105,12 +105,11 @@ class Player : UIObservable
     public func HitPlayer() {
         if self.Health - 1 > 0 {
             self.Health = self.Health - 1
+            particles?.HitParticles()
         } else {
             self.Health = 0
             self.currentState = PlayerState.Dead
         }
-        
-        particles?.HitParticles()
     }
     
     public func SubPlayerStamina(amount: Int) {

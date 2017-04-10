@@ -119,7 +119,7 @@ class ParticleEmitter: SKNode
         self.addChild(hitEmitter!)
         
         hitEmitter?.position = CGPoint(x: 0, y: 0)
-        hitEmitter?.position.y = (attackEmitter?.position.y)! + attackSpawnDistance/2
+        hitEmitter?.position.y = (hitEmitter?.position.y)! + attackSpawnDistance/2
         hitEmitter?.zRotation = 0
         
         let sfx = SKAction.playSoundFileNamed("Hit.wav", waitForCompletion: false)
