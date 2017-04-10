@@ -131,25 +131,34 @@ class ParticleEmitter: SKNode
         self.run(lifeSequence, withKey: "hitWait")
     }
     
+    private var isDizzy : Bool = false
+    
     public func DizzyParticles()
     {
-        self.dizzyEmitter?.removeFromParent()
-        self.removeAction(forKey: "dizzyWait")
+        if(!isDizzy)
+        {
+            self.dizzyEmitter?.removeFromParent()
+            self.removeAction(forKey: "dizzyWait")
 
-        dizzyEmitter = SKEmitterNode(fileNamed: "BattleDizzy.sks")
-        dizzyEmitter?.name = "dizzyEmitter"
-        dizzyEmitter?.targetNode = self.scene?.childNode(withName: "//Parent")
-        self.addChild(dizzyEmitter!)
-        
-        dizzyEmitter?.position = CGPoint(x: 0, y: 0)
-        dizzyEmitter?.zRotation = 0
-        
-        let sfx = SKAction.playSoundFileNamed("Dizzy.wav", waitForCompletion: false)
-        let wait = SKAction.wait(forDuration: 3)
-        let destroy = SKAction.run(SKAction.removeFromParent()
-            , onChildWithName: (dizzyEmitter?.name)!)
-        let lifeSequence = SKAction.sequence([sfx, wait, destroy])
-        
-        self.run(lifeSequence, withKey: "dizzyWait")
+            isDizzy = true
+            dizzyEmitter = SKEmitterNode(fileNamed: "BattleDizzy.sks")
+            dizzyEmitter?.name = "dizzyEmitter"
+            dizzyEmitter?.targetNode = self.scene?.childNode(withName: "//Parent")
+            self.addChild(dizzyEmitter!)
+            
+            dizzyEmitter?.position = CGPoint(x: 0, y: 0)
+            dizzyEmitter?.zRotation = 0
+            
+            let sfx = SKAction.playSoundFileNamed("Dizzy.wav", waitForCompletion: false)
+            let wait = SKAction.wait(forDuration: 3)
+            let destroy = SKAction.run(SKAction.removeFromParent()
+                , onChildWithName: (dizzyEmitter?.name)!)
+            let toggleBool = SKAction.run {
+                self.isDizzy = false
+            }
+            let lifeSequence = SKAction.sequence([sfx, wait, toggleBool, destroy])
+            
+            self.run(lifeSequence, withKey: "dizzyWait")
+        }
     }
 }

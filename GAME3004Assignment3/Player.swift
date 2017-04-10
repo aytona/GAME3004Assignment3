@@ -194,7 +194,7 @@ class Player : UIObservable
             let sequence = SKAction.sequence([StaminaHeal, SKAction.wait(forDuration: 1.5), SKAction.run({ self.RecoverStamina() })])
             self.run(sequence)
         } else {
-            let sequence = SKAction.sequence([StaminaHeal, SKAction.wait(forDuration: 0.5), SKAction.run({ self.RecoverStamina() })])
+            let sequence = SKAction.sequence([StaminaHeal, SKAction.wait(forDuration: 0.1), SKAction.run({ self.RecoverStamina() })])
             self.run(sequence)
         }
     }
