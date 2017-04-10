@@ -24,6 +24,7 @@ public class GameManager {
     var HealthStars : (p1: Array<Any>, p2: Array<Any>)? = nil
     var HealthStars1 = [SKSpriteNode]()
     var HealthStars2 = [SKSpriteNode]()
+    var fullStaminaScale : CGFloat?
     
     var CurrentGameState : GameState
     
@@ -33,14 +34,15 @@ public class GameManager {
         self.StaminaBars.p1 = _StaminaP1
         self.StaminaBars.p2 = _StaminaP2
         self.CurrentGameState = GameState.Default
+        self.fullStaminaScale = _StaminaP1.xScale
         
         self.HealthStars1.append(_HealthBarP1.childNode(withName: "//Star0") as! SKSpriteNode)
         self.HealthStars1.append(_HealthBarP1.childNode(withName: "//Star1") as! SKSpriteNode)
         self.HealthStars1.append(_HealthBarP1.childNode(withName: "//Star2") as! SKSpriteNode)
         
-        self.HealthStars2.append(_HealthBarP2.childNode(withName: "//Star0") as! SKSpriteNode)
-        self.HealthStars2.append(_HealthBarP2.childNode(withName: "//Star1") as! SKSpriteNode)
-        self.HealthStars2.append(_HealthBarP2.childNode(withName: "//Star2") as! SKSpriteNode)
+        self.HealthStars2.append(_HealthBarP2.childNode(withName: "//Star3") as! SKSpriteNode)
+        self.HealthStars2.append(_HealthBarP2.childNode(withName: "//Star4") as! SKSpriteNode)
+        self.HealthStars2.append(_HealthBarP2.childNode(withName: "//Star5") as! SKSpriteNode)
         
 //        for star in 0...2 {
 //            self.HealthStars?.p1.append(_HealthBarP1.childNode(withName: "//Star" + String(star)) as! SKSpriteNode)
@@ -72,16 +74,18 @@ public class GameManager {
     
     private func PlayerStates() {
         if self.Players.p1.GetPlayerState() == PlayerState.Attacking && self.Players.p2.GetPlayerState() != PlayerState.Dodging {
+            self.Players.p1.currentState = PlayerState.Default
             self.Players.p2.HitPlayer()
         }
         if self.Players.p2.GetPlayerState() == PlayerState.Attacking && self.Players.p1.GetPlayerState() != PlayerState.Dodging {
+            self.Players.p2.currentState = PlayerState.Default
             self.Players.p1.HitPlayer()
         }
     }
     
     private func UpdateStamina() {
-        self.StaminaBars.p1.yScale = CGFloat(self.Players.p1.GetHealth()) / CGFloat(100)
-        self.StaminaBars.p2.yScale = CGFloat(self.Players.p2.GetHealth()) / CGFloat(100)
+        self.StaminaBars.p1.xScale = CGFloat(self.Players.p1.GetPlayerStamina()) / CGFloat(100) * fullStaminaScale!
+        self.StaminaBars.p2.xScale = CGFloat(self.Players.p2.GetPlayerStamina()) / CGFloat(100) * fullStaminaScale!
     }
     
     private func UpdateHealth() {
