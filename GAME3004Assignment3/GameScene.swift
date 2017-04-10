@@ -39,6 +39,10 @@ class GameScene: Scene {
         
         gameOverOverlay = self.childNode(withName: "//UI_GameOverMenu")
         gameOverOverlay?.xScale = 0
+        
+        let bgAudio : SKAudioNode = SKAudioNode(fileNamed: "Battle.mp3")
+        bgAudio.autoplayLooped = true
+        self.addChild(bgAudio)
     }
     
     

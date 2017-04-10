@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		186E84231E9BE8B500D6ACD6 /* Dizzy.wav in Resources */ = {isa = PBXBuildFile; fileRef = 186E841F1E9BE8B500D6ACD6 /* Dizzy.wav */; };
+		186E84241E9BE8B500D6ACD6 /* Dodge.wav in Resources */ = {isa = PBXBuildFile; fileRef = 186E84201E9BE8B500D6ACD6 /* Dodge.wav */; };
+		186E84251E9BE8B500D6ACD6 /* Attack.wav in Resources */ = {isa = PBXBuildFile; fileRef = 186E84211E9BE8B500D6ACD6 /* Attack.wav */; };
+		186E84261E9BE8B500D6ACD6 /* Hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 186E84221E9BE8B500D6ACD6 /* Hit.wav */; };
+		186E84291E9BE8BF00D6ACD6 /* happy_adveture.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 186E84271E9BE8BF00D6ACD6 /* happy_adveture.mp3 */; };
+		186E842C1E9BEFB000D6ACD6 /* Battle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 186E842B1E9BEFB000D6ACD6 /* Battle.mp3 */; };
 		187731001E9292E0006B4BB2 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187730FF1E9292E0006B4BB2 /* Scene.swift */; };
 		189BF8901E92B1C700532E27 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189BF88F1E92B1C700532E27 /* Player.swift */; };
 		18BDBD751E76F8C600E13CD1 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDBD741E76F8C600E13CD1 /* StartViewController.swift */; };
@@ -57,6 +63,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		186E841F1E9BE8B500D6ACD6 /* Dizzy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Dizzy.wav; path = ../../Dizzy.wav; sourceTree = "<group>"; };
+		186E84201E9BE8B500D6ACD6 /* Dodge.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Dodge.wav; path = ../../Dodge.wav; sourceTree = "<group>"; };
+		186E84211E9BE8B500D6ACD6 /* Attack.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Attack.wav; path = ../../Attack.wav; sourceTree = "<group>"; };
+		186E84221E9BE8B500D6ACD6 /* Hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Hit.wav; path = ../../Hit.wav; sourceTree = "<group>"; };
+		186E84271E9BE8BF00D6ACD6 /* happy_adveture.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = happy_adveture.mp3; path = ../../happy_adveture.mp3; sourceTree = "<group>"; };
+		186E842B1E9BEFB000D6ACD6 /* Battle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Battle.mp3; path = ../../Battle.mp3; sourceTree = "<group>"; };
 		187730FF1E9292E0006B4BB2 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		189BF88F1E92B1C700532E27 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		18BDBD741E76F8C600E13CD1 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +135,12 @@
 		233C00541E7892EE000E2C10 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				186E84271E9BE8BF00D6ACD6 /* happy_adveture.mp3 */,
+				186E842B1E9BEFB000D6ACD6 /* Battle.mp3 */,
+				186E841F1E9BE8B500D6ACD6 /* Dizzy.wav */,
+				186E84201E9BE8B500D6ACD6 /* Dodge.wav */,
+				186E84211E9BE8B500D6ACD6 /* Attack.wav */,
+				186E84221E9BE8B500D6ACD6 /* Hit.wav */,
 				2350E3FC1E78961400E21D63 /* kenpixel_blocks.ttf */,
 				2350E3FD1E78961400E21D63 /* kenvector_future_thin.ttf */,
 			);
@@ -343,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23D2F09C1E9AC4B700963FB6 /* MainMenuRain.sks in Resources */,
+				186E84291E9BE8BF00D6ACD6 /* happy_adveture.mp3 in Resources */,
 				23A8CFBE1E9ADCAC000337BE /* BattleDodge.sks in Resources */,
 				9865E8BB1E74AAA900722B03 /* Main.storyboard in Resources */,
 				2390157D1E7C46930070E19E /* StartScene.sks in Resources */,
@@ -350,11 +369,16 @@
 				2350E3FF1E78961400E21D63 /* kenvector_future_thin.ttf in Resources */,
 				23A8CFC21E9ADED0000337BE /* BattleHit.sks in Resources */,
 				9865E8BD1E74AAA900722B03 /* Assets.xcassets in Resources */,
+				186E84241E9BE8B500D6ACD6 /* Dodge.wav in Resources */,
 				9865E8C01E74AAAA00722B03 /* LaunchScreen.storyboard in Resources */,
+				186E842C1E9BEFB000D6ACD6 /* Battle.mp3 in Resources */,
 				23A8CFC01E9ADDEC000337BE /* BattleAttack.sks in Resources */,
 				23A8CFBC1E9ADB58000337BE /* BattleDizzy.sks in Resources */,
 				23D2F09E1E9ACE2300963FB6 /* MainMenuSpark.sks in Resources */,
 				2350E3FE1E78961400E21D63 /* kenpixel_blocks.ttf in Resources */,
+				186E84251E9BE8B500D6ACD6 /* Attack.wav in Resources */,
+				186E84231E9BE8B500D6ACD6 /* Dizzy.wav in Resources */,
+				186E84261E9BE8B500D6ACD6 /* Hit.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
