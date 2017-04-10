@@ -18,6 +18,8 @@ class GameScene: Scene {
     private let pauseMenu = PauseMenu()
     private var gameOverOverlay : SKNode?
     
+    private var gameManager : GameManager?
+    
     override func didMove(to view: SKView) {
         // Set up pause button and menu
         pauseButton = (self.childNode(withName: "//UI_Other//Pause") as! Button)
@@ -39,8 +41,20 @@ class GameScene: Scene {
         
         gameOverOverlay = self.childNode(withName: "//UI_GameOverMenu")
         gameOverOverlay?.xScale = 0
+        
+        gameManager = GameManager(self.childNode(withName: "//Parent/Player1/Panda") as! Player, self.childNode(withName: "//Parent/Player2/Pig") as! Player, self.childNode(withName: "//Parent/UI_Player1/StaminaFill") as! SKSpriteNode, self.childNode(withName: "//Parent/UI_Player2/StaminaFill") as! SKSpriteNode, self.childNode(withName: "//Parent/UI_Player1/HealthStars") as! SKSpriteNode, self.childNode(withName: "//Parent/UI_Player2/HealthStars") as! SKSpriteNode)
     }
     
+    func GameOver() {
+        gameManager?.CurrentGameState = GameState.Pause
+        let player1 = self.childNode(withName: "//Parent/Player1/Panda") as! Player
+        
+        gameOverOverlay?.xScale = 1
+        
+        if player1.GetHealth() == 0 {
+            gameOverOverlay?.zRotation = CGFloat.pi
+        }
+    }
     
     func touchDown(atPoint pos : CGPoint) {
 //        gameOverOverlay?.xScale = 1
@@ -79,6 +93,9 @@ class GameScene: Scene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-
+        gameManager?.GameUpdate()
+        if gameManager?.CurrentGameState == GameState.GameOver {
+            GameOver()
+        }
     }
 }

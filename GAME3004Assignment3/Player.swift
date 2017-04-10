@@ -89,7 +89,7 @@ class Player : UIObservable
         return self.Record
     }
     
-    public func GetPlayerState() ->PlayerState {
+    public func GetPlayerState() -> PlayerState {
         return self.currentState
     }
     
