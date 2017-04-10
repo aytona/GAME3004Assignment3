@@ -43,6 +43,11 @@ class GameScene: Scene {
         gameOverOverlay?.xScale = 0
         
         gameManager = GameManager(self.childNode(withName: "//Parent/Player1/Panda") as! Player, self.childNode(withName: "//Parent/Player2/Pig") as! Player, self.childNode(withName: "//Parent/UI_Player1/StaminaFill") as! SKSpriteNode, self.childNode(withName: "//Parent/UI_Player2/StaminaFill") as! SKSpriteNode, self.childNode(withName: "//Parent/UI_Player1/HealthStars") as! SKSpriteNode, self.childNode(withName: "//Parent/UI_Player2/HealthStars") as! SKSpriteNode)
+
+        let bgAudio : SKAudioNode = SKAudioNode(fileNamed: "Battle.mp3")
+        bgAudio.autoplayLooped = true
+        self.addChild(bgAudio)
+
     }
     
     func GameOver() {

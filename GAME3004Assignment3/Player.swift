@@ -163,7 +163,7 @@ class Player : UIObservable
         
         particles?.AttackParticles()
         
-        self.run(sequence)
+        self.run(sequence, withKey: "attackAnim")
     }
     
     private func ExhaustedSprite() {

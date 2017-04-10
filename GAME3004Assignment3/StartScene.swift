@@ -60,6 +60,10 @@ class StartScene: Scene {
         self.scene?.childNode(withName: "//Parent")?.addChild(emmiter!)
         emmiter?.particleZPosition = -1000
         emmiter?.isUserInteractionEnabled = false
+        
+        let bgAudio : SKAudioNode = SKAudioNode(fileNamed: "happy_adveture.mp3")
+        bgAudio.autoplayLooped = true
+        self.addChild(bgAudio)
     }
     
     func touchDown(atPoint pos : CGPoint) {

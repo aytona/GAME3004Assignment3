@@ -9,6 +9,7 @@
 import Foundation
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class ParticleEmitter: SKNode
 {
@@ -22,36 +23,61 @@ class ParticleEmitter: SKNode
     init(_ spriteHeight : CGFloat)
     {
         attackSpawnDistance = spriteHeight/2
+        do{
+            let sounds:[String] = ["Dizzy", "Dodge", "Attack", "Hit"]
+            for sound in sounds
+            {
+                let path:String = Bundle.main.path(forResource: sound, ofType: "wav")!
+                let url:URL = URL(fileURLWithPath: path)
+                let player:AVAudioPlayer = try AVAudioPlayer(contentsOf: url)
+                player.prepareToPlay()
+            }
+        }catch{
+            
+        }
         
         super.init()
     }
     
     required init?(coder aDecoder: NSCoder) {
         attackSpawnDistance = 100
+        do{
+            let sounds:[String] = ["Dizzy", "Dodge", "Attack", "Hit"]
+            for sound in sounds
+            {
+                let path:String = Bundle.main.path(forResource: sound, ofType: "wav")!
+                let url:URL = URL(fileURLWithPath: path)
+                let player:AVAudioPlayer = try AVAudioPlayer(contentsOf: url)
+                player.prepareToPlay()
+            }
+        }catch{
+            
+        }
         
         super.init()
     }
     
     public func AttackParticles()
     {
-        self.attackEmitter?.removeFromParent()
-        self.removeAction(forKey: "attackWait")
-        
-        attackEmitter = SKEmitterNode(fileNamed: "BattleAttack.sks")
-        attackEmitter?.name = "attackEmitter"
-        attackEmitter?.targetNode = self.parent?.parent
-        self.addChild(attackEmitter!)
-        
-        attackEmitter?.position = CGPoint(x: 0, y: 0)
-        attackEmitter?.position.y = (attackEmitter?.position.y)! + attackSpawnDistance
-        attackEmitter?.zRotation = 0
-        attackEmitter?.particleScale = 0.6
-        
-        let wait = SKAction.wait(forDuration: 1.2)
-        let destroy = SKAction.run(SKAction.removeFromParent()
-            , onChildWithName: (attackEmitter?.name)!)
-        let lifeSequence = SKAction.sequence([wait, destroy])
-        
+//        self.attackEmitter?.removeFromParent()
+//        self.removeAction(forKey: "attackWait")
+//        
+//        attackEmitter = SKEmitterNode(fileNamed: "BattleAttack.sks")
+//        attackEmitter?.name = "attackEmitter"
+//        attackEmitter?.targetNode = self.parent?.parent
+//        self.addChild(attackEmitter!)
+//        
+//        attackEmitter?.position = CGPoint(x: 0, y: 0)
+//        attackEmitter?.position.y = (attackEmitter?.position.y)! + attackSpawnDistance
+//        attackEmitter?.zRotation = 0
+//        attackEmitter?.particleScale = 0.6
+//        
+        let sfx = SKAction.playSoundFileNamed("Attack.wav", waitForCompletion: false)
+//        let wait = SKAction.wait(forDuration: 1.2)
+//        let destroy = SKAction.run(SKAction.removeFromParent()
+//            , onChildWithName: (attackEmitter?.name)!)
+//        let lifeSequence = SKAction.sequence([sfx, wait, destroy])
+        let lifeSequence = SKAction.sequence([sfx])
         self.run(lifeSequence, withKey: "attackWait")
     }
     
@@ -73,10 +99,11 @@ class ParticleEmitter: SKNode
             dodgeEmitter?.xAcceleration = (dodgeEmitter?.xAcceleration)! * -1
         }
         
+        let sfx = SKAction.playSoundFileNamed("Dodge.wav", waitForCompletion: false)
         let wait = SKAction.wait(forDuration: 0.5)
         let destroy = SKAction.run(SKAction.removeFromParent()
             , onChildWithName: (dodgeEmitter?.name)!)
-        let lifeSequence = SKAction.sequence([wait, destroy])
+        let lifeSequence = SKAction.sequence([sfx, wait, destroy])
         
         self.run(lifeSequence, withKey: "dodgeWait")
     }
@@ -95,35 +122,34 @@ class ParticleEmitter: SKNode
         hitEmitter?.position.y = (attackEmitter?.position.y)! + attackSpawnDistance/2
         hitEmitter?.zRotation = 0
         
+        let sfx = SKAction.playSoundFileNamed("Hit.wav", waitForCompletion: false)
         let wait = SKAction.wait(forDuration: 0.7)
         let destroy = SKAction.run(SKAction.removeFromParent()
             , onChildWithName: (hitEmitter?.name)!)
-        let lifeSequence = SKAction.sequence([wait, destroy])
+        let lifeSequence = SKAction.sequence([sfx, wait, destroy])
         
         self.run(lifeSequence, withKey: "hitWait")
     }
     
     public func DizzyParticles()
     {
-        if(dizzyEmitter == nil)
-        {
-            self.dizzyEmitter?.removeFromParent()
-            self.removeAction(forKey: "dizzyWait")
+        self.dizzyEmitter?.removeFromParent()
+        self.removeAction(forKey: "dizzyWait")
 
-            dizzyEmitter = SKEmitterNode(fileNamed: "BattleDizzy.sks")
-            dizzyEmitter?.name = "dizzyEmitter"
-            dizzyEmitter?.targetNode = self.scene?.childNode(withName: "//Parent")
-            self.addChild(dizzyEmitter!)
-            
-            dizzyEmitter?.position = CGPoint(x: 0, y: 0)
-            dizzyEmitter?.zRotation = 0
-            
-            let wait = SKAction.wait(forDuration: 3)
-            let destroy = SKAction.run(SKAction.removeFromParent()
-                , onChildWithName: (dizzyEmitter?.name)!)
-            let lifeSequence = SKAction.sequence([wait, destroy])
-            
-            self.run(lifeSequence, withKey: "dizzyWait")
-        }
+        dizzyEmitter = SKEmitterNode(fileNamed: "BattleDizzy.sks")
+        dizzyEmitter?.name = "dizzyEmitter"
+        dizzyEmitter?.targetNode = self.scene?.childNode(withName: "//Parent")
+        self.addChild(dizzyEmitter!)
+        
+        dizzyEmitter?.position = CGPoint(x: 0, y: 0)
+        dizzyEmitter?.zRotation = 0
+        
+        let sfx = SKAction.playSoundFileNamed("Dizzy.wav", waitForCompletion: false)
+        let wait = SKAction.wait(forDuration: 3)
+        let destroy = SKAction.run(SKAction.removeFromParent()
+            , onChildWithName: (dizzyEmitter?.name)!)
+        let lifeSequence = SKAction.sequence([sfx, wait, destroy])
+        
+        self.run(lifeSequence, withKey: "dizzyWait")
     }
 }
