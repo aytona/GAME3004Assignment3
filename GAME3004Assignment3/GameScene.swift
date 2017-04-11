@@ -44,7 +44,7 @@ class GameScene: Scene {
         
         gameManager = GameManager(self.childNode(withName: "//Parent/Player1/Panda") as! Player, self.childNode(withName: "//Parent/Player2/Pig") as! Player, self.childNode(withName: "//Parent/UI_Player1/StaminaFill") as! SKSpriteNode, self.childNode(withName: "//Parent/UI_Player2/StaminaFill") as! SKSpriteNode, self.childNode(withName: "//Parent//UI_Player1//HealthStars")!, self.childNode(withName: "//Parent//UI_Player2//HealthStars")!)
 
-        let bgAudio : SKAudioNode = SKAudioNode(fileNamed: "Battle.mp3")
+        let bgAudio : SKAudioNode = SKAudioNode(fileNamed: "BattleMusic.mp3")
         bgAudio.autoplayLooped = true
         self.addChild(bgAudio)
 
@@ -75,8 +75,8 @@ class GameScene: Scene {
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        gameOverOverlay?.xScale = 0
-        gameOverOverlay?.zRotation = 0
+//        gameOverOverlay?.xScale = 0
+//        gameOverOverlay?.zRotation = 0
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
