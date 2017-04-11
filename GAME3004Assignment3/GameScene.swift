@@ -20,6 +20,8 @@ class GameScene: Scene {
     
     private var gameManager : GameManager?
     
+    let sprites = [#imageLiteral(resourceName: "panda"), #imageLiteral(resourceName: "pig"), #imageLiteral(resourceName: "elephant"), #imageLiteral(resourceName: "monkey"), #imageLiteral(resourceName: "parrot"), #imageLiteral(resourceName: "penguin"), #imageLiteral(resourceName: "hippo")]
+    
     override func didMove(to view: SKView) {
         // Set up pause button and menu
         pauseButton = (self.childNode(withName: "//UI_Other//Pause") as! Button)
@@ -47,6 +49,12 @@ class GameScene: Scene {
         let bgAudio : SKAudioNode = SKAudioNode(fileNamed: "BattleMusic.mp3")
         bgAudio.autoplayLooped = true
         self.addChild(bgAudio)
+        
+        // Set random sprite
+        var rand = Int(arc4random_uniform(UInt32(sprites.count)))
+        (self.childNode(withName: "//Parent//Player1//Panda") as! SKSpriteNode).texture = SKTexture(image: sprites[rand])
+        rand = Int(arc4random_uniform(UInt32(sprites.count)))
+        (self.childNode(withName: "//Parent//Player2//Pig") as! SKSpriteNode).texture = SKTexture(image: sprites[rand])
 
     }
     

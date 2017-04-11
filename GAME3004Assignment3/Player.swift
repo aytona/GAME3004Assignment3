@@ -58,6 +58,8 @@ class Player : UIObservable
         
         self.PlayerUpdate()
         self.RecoverStamina()
+        
+        print(self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -70,6 +72,7 @@ class Player : UIObservable
         self.currentState = PlayerState.Default
 
         super.init(coder: aDecoder)
+        
         self.isUserInteractionEnabled = true
         
         self.particles = ParticleEmitter(self.size.height)
@@ -79,6 +82,8 @@ class Player : UIObservable
         
         self.PlayerUpdate()
         self.RecoverStamina()
+        
+        print(self)
     }
     
     public func GetHealth() -> Int {
@@ -151,7 +156,7 @@ class Player : UIObservable
     }
     
     private func AttackSprite() {
-        SubPlayerStamina(amount: 15)
+        SubPlayerStamina(amount: 65)
         
         var action1 = SKAction()
         action1 = SKAction.move(to: CGPoint(x: self.position.x, y: self.position.y + 100), duration: 0.1)
@@ -190,7 +195,7 @@ class Player : UIObservable
         }
         
         if self.Stamina > 0 && self.currentState != PlayerState.Exhausted{
-            let sequence = SKAction.sequence([StaminaHeal, SKAction.wait(forDuration: 1.5), SKAction.run({ self.RecoverStamina() })])
+            let sequence = SKAction.sequence([StaminaHeal, SKAction.wait(forDuration: 1), SKAction.run({ self.RecoverStamina() })])
             self.run(sequence)
         } else {
             let sequence = SKAction.sequence([StaminaHeal, SKAction.wait(forDuration: 0.1), SKAction.run({ self.RecoverStamina() })])
@@ -200,7 +205,7 @@ class Player : UIObservable
     
     private func PlayerUpdate() {
         // Exhausted Check
-        print(self.Stamina)
+        //print(self.Stamina)
         var ExhaustedAction = SKAction()
         if self.Stamina <= 0 && self.currentState != PlayerState.Exhausted {
             self.currentState = PlayerState.Exhausted
